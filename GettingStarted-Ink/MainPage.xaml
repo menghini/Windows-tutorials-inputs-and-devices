@@ -32,20 +32,21 @@ THE SOFTWARE.
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel x:Name="HeaderPanel" Orientation="Horizontal" Grid.Row="0">
-            <TextBlock x:Name="Header" 
-                       Text="Getting started with ink sample" 
-                       Style="{ThemeResource HeaderTextBlockStyle}" 
-                       Margin="10,0,0,0" />            
-        </StackPanel>
-        
-        <StackPanel x:Name="ToolPanel" Orientation="Horizontal" Grid.Row="1">
-           <!-- Begin "Step 4: Add an ink toolbar" -->
-           <!--<InkToolbar x:Name="inkToolbar" 
-                       VerticalAlignment="Top" 
+        <StackPanel x:Name="HeaderPanel" Orientation="Horizontal" Grid.Row="0"/>
+
+        <StackPanel x:Name="ToolPanel" Orientation="Vertical" Grid.Row="1" Background="#FF1275B9">
+            <!-- Begin "Step 4: Add an ink toolbar" -->
+            <InkToolbar x:Name="inkToolbar" 
+                       VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
                        Margin="10,0,10,0"
-                       TargetInkCanvas="{x:Bind inkCanvas}">
-            </InkToolbar>-->
+                       InitialControls="None"
+                       TargetInkCanvas="{x:Bind inkCanvas}" RequestedTheme="Dark">
+                <InkToolbarEraserButton /> <!--Adds the eraser button-->
+                <InkToolbarBallpointPenButton /> <!--Adds the ballpoint pen button-->
+                
+                
+            </InkToolbar>
             <!-- End "Step 4: Add an ink toolbar" -->
             <!-- Begin "Step 7: Save and load ink" -->
             <!--<Button x:Name="buttonSave" 
@@ -62,14 +63,18 @@ THE SOFTWARE.
         </StackPanel>
 
         <Grid x:Name="drawingCanvas" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="37*"/>
+                <ColumnDefinition Width="463*"/>
+            </Grid.ColumnDefinitions>
 
             <!-- The canvas where we draw the replacement shapes. -->
             <!-- Begin Step 6: Recognize shapes -->
             <!--<Canvas x:Name="canvas" />-->
             <!-- End Step 6: Recognize shapes -->
-            
+
             <!-- Begin "Step 2: Use InkCanvas to support basic inking" -->
-            <InkCanvas x:Name="inkCanvas" />
+            <InkCanvas x:Name="inkCanvas" Grid.ColumnSpan="2" />
             <!-- End "Step 2: Use InkCanvas to support basic inking" -->
 
         </Grid>
@@ -101,8 +106,8 @@ THE SOFTWARE.
                     Margin="10,10,10,10" />-->
             <!-- End "Step 6: Recognize shapes" -->
         </Grid>
-        
-        
-        
+
+
+
     </Grid>
 </Page>
